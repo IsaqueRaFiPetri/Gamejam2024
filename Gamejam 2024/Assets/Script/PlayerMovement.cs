@@ -1,6 +1,5 @@
 using UnityEngine;
 
-
 [RequireComponent(typeof(Rigidbody2D))]
 [RequireComponent(typeof(BoxCollider2D))]
 public class PlayerMovement : MonoBehaviour
@@ -9,8 +8,7 @@ public class PlayerMovement : MonoBehaviour
     float horizontal, vertical;
 
     bool isGrounded, canClimb;
-
-    
+    PlayerStats playStats;    
 
     public float moveSpeed;
     public float jumpStregth;
@@ -21,20 +19,46 @@ public class PlayerMovement : MonoBehaviour
 
     //public Animator animator;
     
-    // Start is called before the first frame update
     void Start()
     {
         body = GetComponent<Rigidbody2D>();
+        playStats= GetComponent<PlayerStats>();
+        SetPlataformMode();
     }
-    
+
+    private void Update()
+    {
+        if (gameObject.CompareTag("Ladder"))
+        {
+            body.velocity = new Vector2(horizontal * moveSpeed, vertical * moveSpeed);
+            body.isKinematic = true;
+            canClimb = true;
+        }
+        else
+        {
+            body.isKinematic = false;
+            canClimb = false;
+            body.velocity = new Vector2(horizontal * moveSpeed, body.velocity.y);
+
+
+            if (isGrounded && Input.GetButton(inputNameJump))
+            {
+
+                body.AddForce(new Vector2(0, jumpStregth));
+                isGrounded = false;
+            }
+        }
+    }
 
     private void FixedUpdate()
     {
         horizontal = Input.GetAxisRaw(inputNameHorizontal);
         vertical = Input.GetAxisRaw(inputNameVertical);
+        print(canClimb);
     }
 
-    void PlataformMove()
+    #region Estilo de Movimentação
+    public void PlataformMove()
     {
         body.velocity = new Vector2(horizontal * moveSpeed, body.velocity.y);
 
@@ -46,11 +70,14 @@ public class PlayerMovement : MonoBehaviour
             isGrounded= false;
         }
     }
-    void TopDownMove()
+    public void TopDownMove()
     {
         body.velocity = new Vector2(horizontal * moveSpeed, vertical * moveSpeed);
     }
 
+    #endregion Estilo de Movimentação
+
+    
     private void OnCollisionEnter2D(Collision2D other)
     {
         if (other.gameObject.CompareTag("Ground"))
@@ -58,23 +85,33 @@ public class PlayerMovement : MonoBehaviour
             isGrounded = true;
         }
     }
-    /*private void OnTriggerEnter(Collider other)
+
+    /*private void OnTriggerStay(Collider col)
     {
-        if (other.gameObject.CompareTag("Ladder"))
+        if (col.gameObject.CompareTag("Ladder"))
         {
-                body.isKinematic = true;
-                canClimb = true;
-                PlayerStats.SetTopDownMode();
+            body.isKinematic = true;
+            canClimb = true;
+            SetTopDownMode();
         }
         else
         {
             body.isKinematic = false;
             canClimb = false;
-            PlayerStatas.SetPlataformMode();
+            SetPlataformMode();
         }
     }*/
 
-    
+    public void SetTopDownMode()
+    {
+        playStats.modes = PlayerModes.TopDown;
+        TopDownMove();
+    }
+    public void SetPlataformMode()
+    {
+        playStats.modes = PlayerModes.Plataforma;
+        PlataformMove();
+    }
 }
 
 

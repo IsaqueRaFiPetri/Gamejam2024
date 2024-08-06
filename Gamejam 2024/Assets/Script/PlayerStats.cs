@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public enum PlayerModes
@@ -8,30 +6,26 @@ public enum PlayerModes
 }
 public class PlayerStats : MonoBehaviour
 {
-    /*PlayerModes modes;
+    public PlayerModes modes;
+    PlayerMovement playMov;
 
+    private void Start()
+    {
+        playMov = GetComponent<PlayerMovement>();
+    }
     void Update()
     {
         switch (modes)
         {
             case PlayerModes.Plataforma:
-                SetPlataformMode();
+                playMov.SetPlataformMode();
                 break;
 
             case PlayerModes.TopDown:
-                SetTopDownMode();
+                playMov.SetTopDownMode();
                 break;
         }
     }
 
-    public static void SetTopDownMode()
-    {
-        modes = PlayerModes.TopDown;
-        PlayerMovement.TopDownMove();
-    }
-    public static void SetPlataformMode()
-    {
-        modes = PlayerModes.Plataforma;
-        PlayerMovement.PlataformMove();
-    }*/
+    
 }
