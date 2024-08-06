@@ -6,6 +6,9 @@ TagManager:
   tags:
   - Ground
   - Ladder
+  - Void
+  - Enemy
+  - tiro
   layers:
   - Default
   - TransparentFX
