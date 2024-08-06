@@ -8,7 +8,7 @@ public class Parallax : MonoBehaviour
     private float length;
     private float StartPos;
     private Transform cam;
-    private float ParallaxEffect;
+    public float ParallaxEffect;
 
     void Start()
     {
