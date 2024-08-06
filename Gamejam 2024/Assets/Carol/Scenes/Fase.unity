@@ -346,6 +346,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player2
       objectReference: {fileID: 0}
+    - target: {fileID: 2837983584352354349, guid: fc0c1a5c8e504ee4e99c5ea9aa975972, type: 3}
+      propertyPath: inputNameVertical
+      value: Vertical2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fc0c1a5c8e504ee4e99c5ea9aa975972, type: 3}
 --- !u!1 &149411334
@@ -696,6 +700,7 @@ GameObject:
   m_Component:
   - component: {fileID: 722534452}
   - component: {fileID: 722534453}
+  - component: {fileID: 722534454}
   m_Layer: 0
   m_Name: Static Plataform
   m_TagString: Untagged
@@ -770,6 +775,32 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!61 &722534454
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 722534451}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
 --- !u!1 &736538681
 GameObject:
   m_ObjectHideFlags: 0
@@ -949,6 +980,7 @@ GameObject:
   m_Component:
   - component: {fileID: 928822779}
   - component: {fileID: 928822780}
+  - component: {fileID: 928822781}
   m_Layer: 0
   m_Name: Static Plataform
   m_TagString: Untagged
@@ -1023,6 +1055,32 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!61 &928822781
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 928822778}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
 --- !u!1 &996941406
 GameObject:
   m_ObjectHideFlags: 0
@@ -1663,6 +1721,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1361892079}
   - component: {fileID: 1361892080}
+  - component: {fileID: 1361892081}
   m_Layer: 0
   m_Name: Static Plataform
   m_TagString: Untagged
@@ -1737,6 +1796,32 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!61 &1361892081
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1361892078}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
 --- !u!1 &1405503634
 GameObject:
   m_ObjectHideFlags: 0
@@ -2642,7 +2727,6 @@ GameObject:
   - component: {fileID: 2019329807}
   - component: {fileID: 2019329806}
   - component: {fileID: 2019329808}
-  - component: {fileID: 2019329809}
   m_Layer: 0
   m_Name: escada (1)
   m_TagString: Ladder
@@ -2710,8 +2794,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2019329805}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.49, y: 3.4847, z: 0}
-  m_LocalScale: {x: 0.66925436, y: 9.167193, z: 0.287}
+  m_LocalPosition: {x: 4.6783, y: 3.6902, z: 0}
+  m_LocalScale: {x: 1.0458438, y: 9.577884, z: 0.287}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -2743,24 +2827,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!114 &2019329809
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2019329805}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4a83e3543bb820845b172436492149f3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ladder: {fileID: 0}
-  startPoint: {fileID: 0}
-  endPoint: {fileID: 0}
-  keyToUse: 
-  body: {fileID: 0}
-  climbForce: 0
 --- !u!1 &2024595203
 GameObject:
   m_ObjectHideFlags: 0
@@ -2859,11 +2925,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4579778883898599698, guid: 698abb832ae68944d960c20ebf79776a, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 6.87
+      value: 6.5
       objectReference: {fileID: 0}
     - target: {fileID: 4579778883898599698, guid: 698abb832ae68944d960c20ebf79776a, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.13
+      value: 0.39
       objectReference: {fileID: 0}
     - target: {fileID: 4579778883898599698, guid: 698abb832ae68944d960c20ebf79776a, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2896,6 +2962,14 @@ PrefabInstance:
     - target: {fileID: 4579778883898599698, guid: 698abb832ae68944d960c20ebf79776a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4579778883898599726, guid: 698abb832ae68944d960c20ebf79776a, type: 3}
+      propertyPath: key
+      value: E
+      objectReference: {fileID: 0}
+    - target: {fileID: 4579778883898599726, guid: 698abb832ae68944d960c20ebf79776a, type: 3}
+      propertyPath: inputNameVertical
+      value: Vertical1
       objectReference: {fileID: 0}
     - target: {fileID: 4579778883898599727, guid: 698abb832ae68944d960c20ebf79776a, type: 3}
       propertyPath: m_Name
