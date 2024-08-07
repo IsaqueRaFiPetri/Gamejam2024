@@ -27,9 +27,5 @@ public class Inimigo : MonoBehaviour
         balaRb.velocity = new Vector2(speed, 0);
         StartCoroutine(Shoot());
     }
-    private void OnBecameVisible()
-    {
-        Destroy(tiro, 0.25f);
-    }
 }
    
