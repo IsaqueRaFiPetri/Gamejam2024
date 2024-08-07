@@ -5,7 +5,7 @@ using UnityEngine;
 public class MovingPlataform : MonoBehaviour
 {
     public Transform platform, startPoint, endPoint;
-    public float speed = 1.3f;
+    public float speed = 1.5f;
 
     int direction = 1;
 
