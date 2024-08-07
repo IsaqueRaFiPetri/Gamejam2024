@@ -5,10 +5,11 @@ TagManager:
   serializedVersion: 2
   tags:
   - Ground
-  - Ladder
+  - Ladder1
   - Void
   - Enemy
   - tiro
+  - Ladder2
   layers:
   - Default
   - TransparentFX

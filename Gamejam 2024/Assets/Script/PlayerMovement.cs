@@ -1,83 +1,52 @@
 using UnityEngine;
 
+
 [RequireComponent(typeof(Rigidbody2D))]
 [RequireComponent(typeof(BoxCollider2D))]
 public class PlayerMovement : MonoBehaviour
 {
     Rigidbody2D body;
-    float horizontal, vertical;
+    float horizontal, jump;
 
-    bool isGrounded, canClimb;
-    PlayerStats playStats;    
-
+    [Header("Variaveis de Força")]
     public float moveSpeed;
     public float jumpStregth;
+    float climbForce;
+
+    [Header("Nome dos Input")]
     [SerializeField] private string inputNameHorizontal;
     [SerializeField] private string inputNameJump;
-    [SerializeField] private string inputNameVertical;
-
+    bool isGrounded, canClimb;
 
     //public Animator animator;
-    
+
+    // Start is called before the first frame update
     void Start()
     {
         body = GetComponent<Rigidbody2D>();
-        playStats= GetComponent<PlayerStats>();
-        SetPlataformMode();
     }
-
-    private void Update()
-    {
-        if (gameObject.CompareTag("Ladder"))
-        {
-            body.velocity = new Vector2(horizontal * moveSpeed, vertical * moveSpeed);
-            body.isKinematic = true;
-            canClimb = true;
-        }
-        else
-        {
-            body.isKinematic = false;
-            canClimb = false;
-            body.velocity = new Vector2(horizontal * moveSpeed, body.velocity.y);
-
-
-            if (isGrounded && Input.GetButton(inputNameJump))
-            {
-
-                body.AddForce(new Vector2(0, jumpStregth));
-                isGrounded = false;
-            }
-        }
-    }
-
-    private void FixedUpdate()
+    void Update()
     {
         horizontal = Input.GetAxisRaw(inputNameHorizontal);
-        vertical = Input.GetAxisRaw(inputNameVertical);
-        print(canClimb);
     }
-
-    #region Estilo de Movimentação
-    public void PlataformMove()
+    // Update is called once per frame
+    void FixedUpdate()
     {
         body.velocity = new Vector2(horizontal * moveSpeed, body.velocity.y);
 
 
-        if (isGrounded && Input.GetButton(inputNameJump))
+        if (isGrounded && Input.GetButtonDown(inputNameJump))
         {
 
             body.AddForce(new Vector2(0, jumpStregth));
-            isGrounded= false;
+            isGrounded = false;
+        }
+        else if(canClimb && Input.GetButton(inputNameJump))
+        {
+            body.AddForce(new Vector2(0, climbForce));
+            canClimb = false;
         }
     }
-    public void TopDownMove()
-    {
-        body.velocity = new Vector2(horizontal * moveSpeed, vertical * moveSpeed);
-    }
-
-    #endregion Estilo de Movimentação
-
-    
     private void OnCollisionEnter2D(Collision2D other)
     {
         if (other.gameObject.CompareTag("Ground"))
@@ -85,37 +54,20 @@ public class PlayerMovement : MonoBehaviour
             isGrounded = true;
         }
     }
-
-    /*private void OnTriggerStay(Collider col)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (col.gameObject.CompareTag("Ladder"))
+        if (collision.CompareTag("Ladder1"))
         {
-            body.isKinematic = true;
             canClimb = true;
-            SetTopDownMode();
+            climbForce = 550;
         }
-        else
+        if (collision.CompareTag("Ladder2"))
         {
-            body.isKinematic = false;
-            canClimb = false;
-            SetPlataformMode();
+            canClimb = true;
+            climbForce = 300;
         }
-    }*/
-
-    public void SetTopDownMode()
-    {
-        playStats.modes = PlayerModes.TopDown;
-        TopDownMove();
-    }
-    public void SetPlataformMode()
-    {
-        playStats.modes = PlayerModes.Plataforma;
-        PlataformMove();
     }
 }
-
-
-
 //https://youtube.com/playlist?list=PLiyfvmtjWC_Ugm9c9Q7WaoRFGBZh_Z6ys&si=XGDgVasGYrZkyPb9
 //anim -> https://www.youtube.com/watch?v=whzomFgjT50&ab_channel=Brackeys
 //https://www.youtube.com/watch?v=miI82pJCxSY&ab_channel=SharkGames
