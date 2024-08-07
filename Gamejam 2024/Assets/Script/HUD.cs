@@ -7,18 +7,22 @@ public class HUD : MonoBehaviour
 {
     public Image lifeBar;
     public GameObject player;
-    PlayerStats stats;
+    public PlayerStats stats;
 
     private void Start()
     {
         SetLife();
         stats = player.GetComponent<PlayerStats>();
+    }
 
+    private void Update()
+    {
+        SetLife();
     }
 
     public void SetLife()
     {
-        lifeBar.fillAmount = (float)stats.GetLife() / (float)stats.lifeMax;
+        lifeBar.fillAmount = stats.GetLife() / stats.lifeMax;
 
     }
 }

@@ -35,7 +35,7 @@ public class PlayerMovement : MonoBehaviour
         body.velocity = new Vector2(horizontal * moveSpeed, body.velocity.y);
 
 
-        if (isGrounded && Input.GetButtonDown(inputNameJump))
+        if (isGrounded && Input.GetButton(inputNameJump))
         {
 
             body.AddForce(new Vector2(0, jumpStregth));
