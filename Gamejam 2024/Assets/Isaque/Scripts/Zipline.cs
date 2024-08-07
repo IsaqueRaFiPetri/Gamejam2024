@@ -6,10 +6,15 @@ using UnityEngine;
 public class Zipline : MonoBehaviour
 {
     public LineRenderer lineR;
+    Transform startPoint, endPoint;
 
     private void Start()
     {
         lineR = GetComponent<LineRenderer>();
+    }
+    private void Update()
+    {
+        //lineR.SetPositions();
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {

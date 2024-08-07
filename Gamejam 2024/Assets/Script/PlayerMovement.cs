@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -11,6 +12,7 @@ public class PlayerMovement : MonoBehaviour
 {
     Rigidbody2D body;
     float horizontal, vertical;
+    List<Zipline> lines = new List<Zipline>(); // -> lista
 
     [Header("Variaveis de Força")]
     public float moveSpeed;
@@ -23,6 +25,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private string inputNameJump;
     [SerializeField] private string inputNameVertical;
     bool isGrounded, canClimb;
+    Transform playerPos;
 
     public UnityEvent OnNormal, OnStairs, OnZipLine;
 
@@ -32,10 +35,14 @@ public class PlayerMovement : MonoBehaviour
     void Start()
     {
         body = GetComponent<Rigidbody2D>();
+        playerPos = GetComponent<Transform>();
+        SetPlayerState(PlayerStates.Normal);
     }
 
     void Update()
     {
+        print(state);
+
         switch (state)
         {
             case PlayerStates.Normal:
@@ -52,21 +59,30 @@ public class PlayerMovement : MonoBehaviour
     
     void FixedUpdate()
     {
-
-        body.velocity = new Vector2(horizontal * moveSpeed, body.velocity.y);
-
-
-        if (isGrounded && Input.GetButton(inputNameJump))
+        if(state == PlayerStates.Normal)
         {
+            body.velocity = new Vector2(horizontal * moveSpeed, body.velocity.y);
 
-            body.AddForce(new Vector2(0, jumpStregth));
-            isGrounded = false;
+            if (isGrounded && Input.GetButton(inputNameJump))
+            {
+
+                body.AddForce(new Vector2(0, jumpStregth));
+                isGrounded = false;
+            }
         }
-        else if(canClimb && Input.GetButton(inputNameJump))
+        if(state == PlayerStates.Stairs)
         {
-            body.AddForce(new Vector2(0, climbForce));
+            if (canClimb && Input.GetButton(inputNameVertical))
+            {
+                body.velocity = new Vector2(body.velocity.x, vertical * moveSpeed);
+            }
+        }
+        if(state == PlayerStates.ZipLine)
+        {
+            body.AddForce(new Vector2());
             canClimb = false;
         }
+        
     }
     private void OnCollisionEnter2D(Collision2D other)
     {
@@ -79,8 +95,12 @@ public class PlayerMovement : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        lines.Add(collision.GetComponent<Zipline>());
+
+
         if (collision.CompareTag("Ladder"))
         {
+            canClimb = true;
             SetPlayerState(PlayerStates.Stairs);
         }
         else if (collision.CompareTag("ZipLine"))
@@ -91,6 +111,15 @@ public class PlayerMovement : MonoBehaviour
         {
             SetPlayerState(PlayerStates.Normal);
         }
+    }
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        lines.Remove(collision.GetComponent<Zipline>());
+    }
+
+    private void Zipline()
+    {
+        
     }
 
     /*private void OnTriggerEnter2D(Collider2D collision)
