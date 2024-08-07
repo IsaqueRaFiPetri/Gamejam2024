@@ -22,7 +22,7 @@ public class HUD : MonoBehaviour
 
     public void SetLife()
     {
-        lifeBar.fillAmount = stats.GetLife() / stats.lifeMax;
+        lifeBar.fillAmount = (float)stats.GetLife() / (float)stats.lifeMax;
 
     }
 }
