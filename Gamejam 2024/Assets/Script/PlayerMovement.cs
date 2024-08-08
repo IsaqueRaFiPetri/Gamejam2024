@@ -54,6 +54,7 @@ public class PlayerMovement : MonoBehaviour
             /*case PlayerStates.ZipLine:
                 
                 break;*/
+
         }
     }
     
@@ -100,7 +101,7 @@ public class PlayerMovement : MonoBehaviour
         lines.Add(collision.GetComponent<Zipline>());
 
 
-        if (collision.CompareTag("Ladder"))
+        if (collision.CompareTag("Ladder1"))
         {
             canClimb = true;
             SetPlayerState(PlayerStates.Stairs);
@@ -112,7 +113,7 @@ public class PlayerMovement : MonoBehaviour
         */
         else
         {
-            SetPlayerState(PlayerStates.Normal);
+            //SetPlayerState(PlayerStates.Normal);
         }
     }
     private void OnTriggerExit2D(Collider2D collision)

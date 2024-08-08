@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 4509378979655098118}
   - component: {fileID: 395896107977100496}
   - component: {fileID: 5961916225526983844}
+  - component: {fileID: 5330004597696338331}
   m_Layer: 0
   m_Name: Bala
   m_TagString: tiro
@@ -144,5 +145,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5f21bc4f0379cad429d382e0d88c48d2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &5330004597696338331
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4723379957709913054}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bddf11c36874cd74fb8b2acbe2a26cd5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
