@@ -116,15 +116,13 @@ public class PlayerMovement : MonoBehaviour
             //SetPlayerState(PlayerStates.Normal);
         }
     }
+
+    
     private void OnTriggerExit2D(Collider2D collision)
     {
         lines.Remove(collision.GetComponent<Zipline>());
     }
-
-    private void Zipline()
-    {
-        
-    }
+ 
 
     /*private void OnTriggerEnter2D(Collider2D collision)
     {
