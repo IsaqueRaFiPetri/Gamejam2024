@@ -88,7 +88,7 @@ public class PlayerMovement : MonoBehaviour
     }
     private void OnCollisionEnter2D(Collision2D other)
     {
-        if (other.gameObject.CompareTag("Ground"))
+        if (other.gameObject.CompareTag("Ground") || other.gameObject.CompareTag("Plataform"))
         {
             isGrounded = true;
             SetPlayerState(PlayerStates.Normal);
@@ -156,6 +156,7 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 }
+
 //https://youtube.com/playlist?list=PLiyfvmtjWC_Ugm9c9Q7WaoRFGBZh_Z6ys&si=XGDgVasGYrZkyPb9
 //anim -> https://www.youtube.com/watch?v=whzomFgjT50&ab_channel=Brackeys
 //https://www.youtube.com/watch?v=miI82pJCxSY&ab_channel=SharkGames

@@ -5,16 +5,17 @@ TagManager:
   serializedVersion: 2
   tags:
   - Ground
-  - Ladder1
   - Void
   - Enemy
   - tiro
-  - Ladder2
   - Player1
   - Player2
   - ZipLine
   - Ladder
   - CamStatic
+  - Plataform
+  - Ladder2
+  - Ladder1
   layers:
   - Default
   - TransparentFX
