@@ -31,7 +31,7 @@ public class PlayerMovement : MonoBehaviour
 
     public Animator anim;
 
-    bool isJump;
+    bool isJump, isWalk;
 
     // Start is called before the first frame update
     void Start()
@@ -61,6 +61,7 @@ public class PlayerMovement : MonoBehaviour
         if(state == PlayerStates.Normal)
         {
             body.velocity = new Vector2(horizontal * moveSpeed, body.velocity.y);
+            anim.SetBool("isWalking", true);
 
             if (isGrounded && Input.GetButton(inputNameJump))
             {
@@ -74,11 +75,13 @@ public class PlayerMovement : MonoBehaviour
         {
             if (canClimb && Input.GetButton(inputNameVertical))
             {
+                anim.SetBool("isClimbing", true);
                 body.velocity = new Vector2(body.velocity.x, vertical * moveSpeed);
             }
         }
 
-        //anim.SetFloat("isWalking",);
+        
+
 
     }
     private void OnCollisionEnter2D(Collision2D other)
