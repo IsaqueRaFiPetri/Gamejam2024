@@ -9,3 +9,4 @@ public class GoToScene : MonoBehaviour
     {
         SceneManager.LoadScene(tp);
     }
+}
