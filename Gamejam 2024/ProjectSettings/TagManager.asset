@@ -14,8 +14,6 @@ TagManager:
   - Ladder
   - CamStatic
   - Plataform
-  - Ladder2
-  - Ladder1
   layers:
   - Default
   - TransparentFX

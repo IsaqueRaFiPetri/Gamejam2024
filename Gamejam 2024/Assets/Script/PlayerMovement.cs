@@ -101,7 +101,7 @@ public class PlayerMovement : MonoBehaviour
         lines.Add(collision.GetComponent<Zipline>());
 
 
-        if (collision.CompareTag("Ladder1"))
+        if (collision.CompareTag("Ladder"))
         {
             canClimb = true;
             SetPlayerState(PlayerStates.Stairs);
