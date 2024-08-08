@@ -4,7 +4,7 @@ using UnityEngine.Events;
 
 public enum PlayerStates
 {
-    Normal, Stairs, ZipLine
+    Normal, Stairs, //ZipLine
 }
 [RequireComponent(typeof(Rigidbody2D))]
 [RequireComponent(typeof(BoxCollider2D))]
@@ -51,9 +51,9 @@ public class PlayerMovement : MonoBehaviour
             case PlayerStates.Stairs:
                 vertical = Input.GetAxisRaw(inputNameVertical);
                 break;
-            case PlayerStates.ZipLine:
+            /*case PlayerStates.ZipLine:
                 
-                break;
+                break;*/
         }
     }
     
@@ -77,12 +77,14 @@ public class PlayerMovement : MonoBehaviour
                 body.velocity = new Vector2(body.velocity.x, vertical * moveSpeed);
             }
         }
-        if(state == PlayerStates.ZipLine)
+        /*if(state == PlayerStates.ZipLine)
         {
             body.AddForce(new Vector2());
             canClimb = false;
         }
-        
+        */
+
+
     }
     private void OnCollisionEnter2D(Collision2D other)
     {
@@ -103,10 +105,11 @@ public class PlayerMovement : MonoBehaviour
             canClimb = true;
             SetPlayerState(PlayerStates.Stairs);
         }
-        else if (collision.CompareTag("ZipLine"))
+        /*else if (collision.CompareTag("ZipLine"))
         {
             SetPlayerState(PlayerStates.ZipLine);
         }
+        */
         else
         {
             SetPlayerState(PlayerStates.Normal);
@@ -147,9 +150,9 @@ public class PlayerMovement : MonoBehaviour
             case PlayerStates.Stairs:
                 OnStairs.Invoke();
                 break;
-            case PlayerStates.ZipLine:
+            /*case PlayerStates.ZipLine:
                 OnZipLine.Invoke();
-                break;
+                break; */
         }
     }
 }
