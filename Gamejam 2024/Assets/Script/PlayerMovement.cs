@@ -29,7 +29,9 @@ public class PlayerMovement : MonoBehaviour
 
     public UnityEvent OnNormal, OnStairs, OnZipLine;
 
-    public Animator animator;
+    public Animator anim;
+
+    bool isJump;
 
     // Start is called before the first frame update
     void Start()
@@ -51,10 +53,6 @@ public class PlayerMovement : MonoBehaviour
             case PlayerStates.Stairs:
                 vertical = Input.GetAxisRaw(inputNameVertical);
                 break;
-            /*case PlayerStates.ZipLine:
-                
-                break;*/
-
         }
     }
     
@@ -69,6 +67,7 @@ public class PlayerMovement : MonoBehaviour
 
                 body.AddForce(new Vector2(0, jumpStregth));
                 isGrounded = false;
+                isJump = true;
             }
         }
         if(state == PlayerStates.Stairs)
@@ -78,13 +77,8 @@ public class PlayerMovement : MonoBehaviour
                 body.velocity = new Vector2(body.velocity.x, vertical * moveSpeed);
             }
         }
-        /*if(state == PlayerStates.ZipLine)
-        {
-            body.AddForce(new Vector2());
-            canClimb = false;
-        }
-        */
 
+        //anim.SetFloat("isWalking",);
 
     }
     private void OnCollisionEnter2D(Collision2D other)
