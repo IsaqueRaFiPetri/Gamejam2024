@@ -15,4 +15,13 @@ public class TriggerCam : MonoBehaviour
     {
         
     }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.transform.tag == "CamStatic")
+        {
+            transform.parent = collision.transform;
+
+        }
+    }
 }

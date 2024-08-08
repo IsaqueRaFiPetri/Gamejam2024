@@ -6,7 +6,7 @@ using UnityEngine;
 public class Inimigo : MonoBehaviour
 {
 
-    float speed = 5;
+    public float shootDirection = -5; //se + atira para a direita, se for -, atira para a esquerda
     public GameObject tiro;
     // Start is called before the first frame update
     void Start()
@@ -24,7 +24,7 @@ public class Inimigo : MonoBehaviour
     {
         yield return new WaitForSeconds(1);
         Rigidbody2D balaRb = Instantiate(tiro, transform.position, transform.rotation).GetComponent<Rigidbody2D>();
-        balaRb.velocity = new Vector2(speed, 0);
+        balaRb.velocity = new Vector2(shootDirection, 0);
         StartCoroutine(Shoot());
     }
 }
