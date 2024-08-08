@@ -31,14 +31,12 @@ public class PlayerMovement : MonoBehaviour
 
     public Animator animator;
 
-    // Start is called before the first frame update
     void Start()
     {
         body = GetComponent<Rigidbody2D>();
         playerPos = GetComponent<Transform>();
         SetPlayerState(PlayerStates.Normal);
     }
-
     void Update()
     {
         print(state);
@@ -51,41 +49,31 @@ public class PlayerMovement : MonoBehaviour
             case PlayerStates.Stairs:
                 vertical = Input.GetAxisRaw(inputNameVertical);
                 break;
-            /*case PlayerStates.ZipLine:
-                
-                break;*/
 
         }
     }
     
     void FixedUpdate()
     {
-        if(state == PlayerStates.Normal)
+        switch (state)
         {
-            body.velocity = new Vector2(horizontal * moveSpeed, body.velocity.y);
+            case PlayerStates.Normal:
+                body.velocity = new Vector2(horizontal * moveSpeed, body.velocity.y);
 
-            if (isGrounded && Input.GetButton(inputNameJump))
-            {
+                if (isGrounded && Input.GetButton(inputNameJump))
+                {
 
-                body.AddForce(new Vector2(0, jumpStregth));
-                isGrounded = false;
-            }
+                    body.AddForce(new Vector2(0, jumpStregth));
+                    isGrounded = false;
+                }
+                break;
+            case PlayerStates.Stairs:
+                if (canClimb && Input.GetButton(inputNameVertical))
+                {
+                    body.velocity = new Vector2(horizontal * moveSpeed, vertical * moveSpeed);
+                }
+                break;
         }
-        if(state == PlayerStates.Stairs)
-        {
-            if (canClimb && Input.GetButton(inputNameVertical))
-            {
-                body.velocity = new Vector2(body.velocity.x, vertical * moveSpeed);
-            }
-        }
-        /*if(state == PlayerStates.ZipLine)
-        {
-            body.AddForce(new Vector2());
-            canClimb = false;
-        }
-        */
-
-
     }
     private void OnCollisionEnter2D(Collision2D other)
     {
@@ -98,26 +86,31 @@ public class PlayerMovement : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        lines.Add(collision.GetComponent<Zipline>());
+        if (collision.CompareTag("Ladder"))
+        {
+            canClimb = true;
+            SetPlayerState(PlayerStates.Stairs);
+            body.velocity = Vector2.zero;
+        }
+        else
+        {
+            SetPlayerState(PlayerStates.Normal);
+        }
+    }
 
-
+    private void OnTriggerStay2D(Collider2D collision)
+    {
         if (collision.CompareTag("Ladder"))
         {
             canClimb = true;
             SetPlayerState(PlayerStates.Stairs);
         }
-        /*else if (collision.CompareTag("ZipLine"))
-        {
-            SetPlayerState(PlayerStates.ZipLine);
-        }
-        */
         else
         {
-            //SetPlayerState(PlayerStates.Normal);
+            SetPlayerState(PlayerStates.Normal);
         }
     }
 
-    
     private void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.CompareTag("Ladder"))
@@ -126,21 +119,6 @@ public class PlayerMovement : MonoBehaviour
             SetPlayerState(PlayerStates.Normal);
         }
     }
- 
-
-    /*private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.CompareTag("Ladder1"))
-        {
-            canClimb = true;
-            climbForce = 550;
-        }
-        if (collision.CompareTag("Ladder2"))
-        {
-            canClimb = true;
-            climbForce = 300;
-        }
-    }*/
 
     void SetPlayerState(PlayerStates playState)
     {
@@ -153,9 +131,6 @@ public class PlayerMovement : MonoBehaviour
             case PlayerStates.Stairs:
                 OnStairs.Invoke();
                 break;
-            /*case PlayerStates.ZipLine:
-                OnZipLine.Invoke();
-                break; */
         }
     }
 }
