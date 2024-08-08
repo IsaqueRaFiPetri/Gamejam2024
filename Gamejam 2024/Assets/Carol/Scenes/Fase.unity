@@ -230,6 +230,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ZipLine (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 6166984894933459050, guid: f340494b31ccf8043bb7708b3c3267db, type: 3}
+      propertyPath: speed
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 6166984894933459051, guid: f340494b31ccf8043bb7708b3c3267db, type: 3}
       propertyPath: m_RootOrder
       value: 24
@@ -68937,6 +68941,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4622095477980007772, guid: bd985e2c5a5e0204dba8bfc0f11f3ec2, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4622095479000441089, guid: bd985e2c5a5e0204dba8bfc0f11f3ec2, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
