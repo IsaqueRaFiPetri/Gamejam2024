@@ -29,7 +29,7 @@ public class PlayerMovement : MonoBehaviour
 
     public UnityEvent OnNormal, OnStairs, OnZipLine;
 
-    //public Animator animator;
+    public Animator animator;
 
     // Start is called before the first frame update
     void Start()
@@ -120,7 +120,11 @@ public class PlayerMovement : MonoBehaviour
     
     private void OnTriggerExit2D(Collider2D collision)
     {
-        lines.Remove(collision.GetComponent<Zipline>());
+        if (collision.CompareTag("Ladder"))
+        {
+            canClimb = false;
+            SetPlayerState(PlayerStates.Normal);
+        }
     }
  
 
