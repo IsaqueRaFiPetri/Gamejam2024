@@ -67393,6 +67393,10 @@ PrefabInstance:
       value: 4.5
       objectReference: {fileID: 0}
     - target: {fileID: 2837983584352354344, guid: fc0c1a5c8e504ee4e99c5ea9aa975972, type: 3}
+      propertyPath: m_FlipX
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2837983584352354344, guid: fc0c1a5c8e504ee4e99c5ea9aa975972, type: 3}
       propertyPath: m_SortingOrder
       value: 168
       objectReference: {fileID: 0}
@@ -67465,6 +67469,10 @@ PrefabInstance:
       value: Player2
       objectReference: {fileID: 0}
     - target: {fileID: 2837983584352354349, guid: fc0c1a5c8e504ee4e99c5ea9aa975972, type: 3}
+      propertyPath: anim
+      value: 
+      objectReference: {fileID: 1818202184}
+    - target: {fileID: 2837983584352354349, guid: fc0c1a5c8e504ee4e99c5ea9aa975972, type: 3}
       propertyPath: animator
       value: 
       objectReference: {fileID: 1818202184}
@@ -67472,6 +67480,10 @@ PrefabInstance:
       propertyPath: jumpStregth
       value: 250
       objectReference: {fileID: 0}
+    - target: {fileID: 2837983584352354349, guid: fc0c1a5c8e504ee4e99c5ea9aa975972, type: 3}
+      propertyPath: spriteRenderer
+      value: 
+      objectReference: {fileID: 1818202192}
     - target: {fileID: 8170937975901399002, guid: fc0c1a5c8e504ee4e99c5ea9aa975972, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: 591
@@ -70389,7 +70401,7 @@ TilemapRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 167
+  m_SortingOrder: 200
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
   m_MaxChunkCount: 16
@@ -76145,6 +76157,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Coletavel: 0
+--- !u!212 &1818202192 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 2837983584352354344, guid: fc0c1a5c8e504ee4e99c5ea9aa975972, type: 3}
+  m_PrefabInstance: {fileID: 134034322}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1858216300 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1514294223, guid: 698abb832ae68944d960c20ebf79776a, type: 3}
@@ -76818,6 +76835,10 @@ PrefabInstance:
       value: 168
       objectReference: {fileID: 0}
     - target: {fileID: 4579778883898599726, guid: 698abb832ae68944d960c20ebf79776a, type: 3}
+      propertyPath: anim
+      value: 
+      objectReference: {fileID: 2113661318}
+    - target: {fileID: 4579778883898599726, guid: 698abb832ae68944d960c20ebf79776a, type: 3}
       propertyPath: animator
       value: 
       objectReference: {fileID: 2113661318}
@@ -76825,6 +76846,10 @@ PrefabInstance:
       propertyPath: jumpStregth
       value: 250
       objectReference: {fileID: 0}
+    - target: {fileID: 4579778883898599726, guid: 698abb832ae68944d960c20ebf79776a, type: 3}
+      propertyPath: spriteRenderer
+      value: 
+      objectReference: {fileID: 2113661332}
     - target: {fileID: 4579778883898599727, guid: 698abb832ae68944d960c20ebf79776a, type: 3}
       propertyPath: m_Name
       value: Player1
@@ -77223,6 +77248,11 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!212 &2113661332 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 4579778883898599699, guid: 698abb832ae68944d960c20ebf79776a, type: 3}
+  m_PrefabInstance: {fileID: 2025423081}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &2114879133
 MonoBehaviour:
   m_ObjectHideFlags: 0

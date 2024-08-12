@@ -12,8 +12,7 @@ public class PlayerMovement : MonoBehaviour
 {
     Rigidbody2D body;
     float horizontal, vertical;
-    List<Zipline> lines = new List<Zipline>(); // -> lista
-
+    
     [Header("Variaveis de Força")]
     public float moveSpeed;
     public float jumpStregth;
@@ -32,10 +31,12 @@ public class PlayerMovement : MonoBehaviour
     public Animator anim;
 
     bool isJump, isWalk;
+    public SpriteRenderer spriteRenderer;
 
     // Start is called before the first frame update
     void Start()
     {
+        spriteRenderer = GetComponent<SpriteRenderer>();
         body = GetComponent<Rigidbody2D>();
         playerPos = GetComponent<Transform>();
         SetPlayerState(PlayerStates.Normal);
@@ -61,14 +62,28 @@ public class PlayerMovement : MonoBehaviour
         if(state == PlayerStates.Normal)
         {
             body.velocity = new Vector2(horizontal * moveSpeed, body.velocity.y);
-            anim.SetBool("isWalking", true);
-
+            
+            if (horizontal <= -0.01f) 
+            {
+                spriteRenderer.flipX = true;
+            }
+            if (horizontal >= 0.01f)
+            {
+                spriteRenderer.flipX = false;
+            }
+            
             if (isGrounded && Input.GetButton(inputNameJump))
             {
-
                 body.AddForce(new Vector2(0, jumpStregth));
                 isGrounded = false;
-                isJump = true;
+            }
+            if (Input.GetButton(inputNameHorizontal))
+            {
+                anim.SetBool("IsWalking", true);
+            }
+            else
+            {
+                anim.SetBool("IsWalking", false);
             }
         }
         if(state == PlayerStates.Stairs)
@@ -79,10 +94,6 @@ public class PlayerMovement : MonoBehaviour
                 body.velocity = new Vector2(body.velocity.x, vertical * moveSpeed);
             }
         }
-
-        
-
-
     }
     private void OnCollisionEnter2D(Collision2D other)
     {
@@ -95,9 +106,6 @@ public class PlayerMovement : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        lines.Add(collision.GetComponent<Zipline>());
-
-
         if (collision.CompareTag("Ladder"))
         {
             canClimb = true;
